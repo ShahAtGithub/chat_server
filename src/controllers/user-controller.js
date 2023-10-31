@@ -39,7 +39,7 @@ const authUser = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (user && (await user.matchPassword(password))) {
-      res.json({
+      res.status(200).json({
         _id: user._id,
         name: user.name,
         email: user.email,
@@ -67,7 +67,7 @@ const allUsers = async (req, res) => {
         }
       : {};
 
-    const users = await User.find(keyword).find({ _id: { $ne: req.user._id } });
+    const users = await User.find(keyword).find({ _id: { $ne: req.user._id } }).select("-password");
     res.send(users);
   } catch (error) {
     console.error(error);
