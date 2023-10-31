@@ -1,7 +1,7 @@
 const Chat = require("../model/chatModel");
 const User = require("../model/userModel");
 
-const accessChat = async (req, res) => {
+const accessChat = async (req, res) => { 
   try {
     const { userId } = req.body;
     if (!userId) {
