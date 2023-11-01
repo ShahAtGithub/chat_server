@@ -22,7 +22,7 @@ const registerUser = async (req, res) => {
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
-        pic: user.pic,
+        pic: user.profilePic,
         token: generateToken(user._id),
       });
     } else {
@@ -44,7 +44,7 @@ const authUser = async (req, res) => {
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
-        pic: user.pic,
+        pic: user.profilePic,
         token: generateToken(user._id),
       });
     } else {

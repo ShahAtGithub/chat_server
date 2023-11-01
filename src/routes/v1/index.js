@@ -11,7 +11,7 @@ router.post("/user/login",UserController.authUser)
 router.get("/user",Authentication,UserController.allUsers)
 
 //chat 
-router.post("/chat",Authentication,ChatController.accessChat)
+router.post("/chat",Authentication,ChatController.createonetooneChat)
 router.get("/chat",Authentication,ChatController.fetchChats)
 router.post("/chat/group",Authentication,ChatController.createGroupChat)
 

@@ -1,7 +1,7 @@
 const Chat = require("../model/chatModel");
 const User = require("../model/userModel");
 
-const accessChat = async (req, res) => { 
+const createonetooneChat = async (req, res) => { 
   try {
     const { userId } = req.body;
     if (!userId) {
@@ -21,7 +21,7 @@ const accessChat = async (req, res) => {
 
     isChat = await User.populate(isChat, {
       path: "latestMessage.sender",
-      select: "name pic email",
+      select: "name profilePic email",
     });
 
     if (isChat.length > 0) {
@@ -60,7 +60,7 @@ const fetchChats = async (req, res) => {
       .then(async (results) => {
         results = await User.populate(results, {
           path: "latestMessage.sender",
-          select: "name pic email",
+          select: "name profilePic email",
         });
         res.status(200).send(results);
       });
@@ -105,7 +105,7 @@ const createGroupChat = async (req, res) => {
 };
 
 module.exports = {
-  accessChat,
+  createonetooneChat,
   fetchChats,
   createGroupChat,
 };
